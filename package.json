@@ -1,0 +1,13 @@
+{
+  "name": "falemais_app_web",
+  "version": "1.0.0",
+  "description": "App web do sistema falemais",
+  "main": "index.js",
+  "repository": "https://github.com/erickgato/falemais_app_web.git",
+  "author": "Erick De Souza Gato <60188768+erickgato@users.noreply.github.com>",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "create-react-app": "^3.4.1"
+  }
+}
