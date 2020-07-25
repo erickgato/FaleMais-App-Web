@@ -1,0 +1,16 @@
+.Content{
+    width: 100%;
+    height: 97vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    .fleft{
+        background-color: white;
+        width: 50%;
+    }
+    .fright{
+        width: 50%;
+        background-color: black;
+        color: white;
+    }
+}
