@@ -1,16 +1,110 @@
-.Content{
-    width: 100%;
-    height: 97vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    .fleft{
-        background-color: white;
-        width: 50%;
+    .Content{
+        width: 99.9%;
+        height: 100vh;
+        background-image: url('../../UI/images/Purplecellphone.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-attachment: fixed;
+        overflow: auto;
+        font-family: "Recursive", sans-serif;
+            .transparent {
+                background-color: transparent;
+                width: 99.9%;
+                height: 70vh;
+                border: 1px solid black;    
+                span{
+                    display: inline-block;
+                    font-size:50pt;
+                    color: white;
+                    margin-left: 20%;
+                    margin-top: 10%;
+                    p{
+                        font-size: 20pt;
+                    }
+                }
+                button{
+                    display: block;
+                    margin: 10% auto;
+                    border: 2px solid white;
+                    background-color: transparent;
+                    width: 9em;
+                    height: 2.7em;
+                    color: white;
+                    font-size: 15pt;
+                    &:hover{
+                        background-color: black;
+                        transition: 0.3s;
+                        border: 2px solid black;
+                        -webkit-transform: scale(1.1);
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            .panel{
+                &.black{
+                    height: 30vh;
+                    background-color: black;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    span{
+                        color: white;
+                        font-size: 30pt;
+                    }
+                    p{
+                        font-size: 15pt;
+                        color: white;
+                        border: 2px solid whitesmoke;
+                        height: 30%;
+                        text-align: center;
+                        padding: 2em;
+                    }
+                }
+                &.white{
+                    background-color: white;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: center;
+                    height: 100%;
+                    .title{
+                        padding: 2em;
+                        font-size: 36pt;
+                    }
+                    nav {
+                        display: flex;
+                        justify-content: space-between;
+                        align-self: center;
+                        ul{
+                            display: flex;
+                            flex-direction: row;
+                            list-style: none;
+                            li{
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }  
+[data-scrow="left"]{
+    &.animate{
+        -webkit-animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-in-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
-    .fright{
-        width: 50%;
-        background-color: black;
-        color: white;
+}
+[data-scrow="right"]{
+    &.animate{
+        -webkit-animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+}
+[data-scrow="top"]{
+    &.animate{
+        -webkit-animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation-delay: 800ms;
+        -webkit-animation-delay: 800ms;
+	        animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     }
 }

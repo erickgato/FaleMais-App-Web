@@ -6,12 +6,15 @@
     justify-content: space-between;
     height: 8vh;
     // border-bottom: 1px solid whitesmoke;
+    background-color: black;
     font-family: 'Roboto', sans-serif;
-    background-color: transparent;
     opacity: 0.9;
     -webkit-animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.4s both;
 	        animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.4s both;
-    ul {    
+    &.transparent {
+      background-color: transparent;
+    }
+          ul {    
         list-style: none;
         display: flex;
         flex-direction: row;
