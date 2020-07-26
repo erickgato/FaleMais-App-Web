@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import Menu from './menu'
 import Content from './main_page_content'
+import Menu from './menu'
 export default class MainPage extends Component {
     render() {
         return (
+            <React.Fragment>
+                <Menu transparent={true} />
             <div className="MainPage">
                 <Content>
                     <div className="fullcenter">
@@ -17,6 +19,7 @@ export default class MainPage extends Component {
                     </div>
                 </Content>
             </div>
+            </React.Fragment>
         )
     }
 }
