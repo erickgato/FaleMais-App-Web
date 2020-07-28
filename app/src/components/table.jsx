@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import "./stylizations/table.scss";
 export default class Table extends Component {
   render() {
     return (
-      <table border="1">
+      <table>
         <thead>
           <tr>
             <th>Origem</th>

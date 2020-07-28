@@ -1,5 +1,4 @@
 import React from 'react'
-
 export default class TableData extends React.Component {
     constructor(props) {
         super(props)
@@ -19,8 +18,6 @@ export default class TableData extends React.Component {
     ActualizeRows() {
         for( let [key, value] of Object.entries(this.props.rows)  )
             this.state.rows[key] = value;
-
-        
     }
     RenderTDs() {
         let tds = [];

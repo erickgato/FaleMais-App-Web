@@ -1,0 +1,21 @@
+.message{
+    border: 1px solid green;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    .messagebody{
+        width: 36%;
+        margin-left: 10%;
+        margin-right: 10%;
+        background-color: black;
+        color: white;
+        border-radius: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img{
+        border-radius: 100em;
+        height: 2em;
+    }
+}
