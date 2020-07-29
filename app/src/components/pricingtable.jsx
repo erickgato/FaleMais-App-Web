@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './stylizations/pricingitem.scss'
+import { Link } from 'react-router-dom'
 export default class PricingTable extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ export default class PricingTable extends Component {
                 <div className={this.class} style={{background: this.backgroundColor }} >
                         <span className="plan"> {this.state.plan}</span>
                         <span className="Price" > <sup> R$ </sup> { this.state.price } </span>
-                    <a href="#"> Quero! </a>
+                    <Link to="#"> Quero </Link>
                 </div>    
                 
             </div>

@@ -1,0 +1,56 @@
+.messagearea {
+    background-color: rgb(32, 30, 30);
+    overflow-x: auto;
+    height: 85vh;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(4,1fr);
+    grid-template-areas: 
+    "bot bot bot bot people people people"
+    "bot bot bot bot people people people"
+    "bot bot bot bot people people people"
+    "bot bot bot bot people people people"
+    "bot bot bot bot people people people"
+    "bot bot bot bot people people people"
+    ;
+    .bot{
+        grid-area: bot;
+    }
+    .people{
+        grid-area: people; 
+        margin-top: 1%;
+    }
+}
+
+.messageinput {
+    background-color: rgba(0, 0, 0, 0.904);
+    height: 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    input{
+        margin-top: 0.5em;
+        height: 70%;
+        width: 30%;
+        border-radius: 7px;
+        text-align: center;
+        font-family: "Recursive", sans-serif;
+        font-size: 16pt;
+        &::placeholder{
+            text-align: center;
+            
+        }
+        &:active{
+            transform: scale(1.1);
+        }
+    }
+    button{
+        margin-left: 2%;
+        margin-top: 0.7%;
+        background-color: transparent !important;
+        border: none !important;
+        img{
+            height: 40px;
+        }
+    }
+}

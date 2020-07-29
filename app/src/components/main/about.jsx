@@ -4,9 +4,6 @@ import Menu from "../menu";
 import PricingItem from "../pricingtable";
 
 export default class About extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   Debounce(func, wait, immediate) {
     let timeout;
     return (...args) => {

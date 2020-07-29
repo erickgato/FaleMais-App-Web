@@ -1,0 +1,11 @@
+{
+    "hello" : "Olá eu sou a assitente de preços",
+    "data" : {
+        "a" : "Qual o seu nome ?",
+        "b": "Qual o ddd de origem ?",
+        "c": "E o de destino ?",
+        "d": "De quanta horas foi/será a ligação ?",
+        "e": "Quantos testes voce quer ?"
+    }
+}
+ 
