@@ -1,14 +1,16 @@
 import React from 'react';
 import Messages from './mesages.json';
-import { Bot } from './message';
-
+import { Bot, People } from './message';
+import sendicon from '../../UI/images/sendicon.png'
+import '../stylizations/chat.scss'
 export default class ChatBot extends React.Component {
     constructor(props) {
         super(props);
-        this.messages = []
+        this.DummyData = []
+
         let index = 0;
         for (let [key] in Messages.data) {
-            this.messages.push({
+            this.DummyData.push({
                 Qname: key,
                 question: Messages.data[key],
                 id: index
@@ -16,50 +18,96 @@ export default class ChatBot extends React.Component {
             ++index;
         }
         this.state = {
-            nextMSG: props.gonext,
-            initialid: this.messages[0].id,
-            passedmessages: []
-        }
-        // Binds
-        this.AwaitMessage = this.AwaitMessage.bind(this);
-        this.GetnextMessage = this.GetnextMessage.bind(this);
+            People: {
+                input: '',
 
-        
-    }
-    render() {
-        return (
-            <React.Fragment>
-                <Bot message={this.SayHello()} key='hellobot' />
-                {this.state.passedmessages}
-            </React.Fragment>
-        )
+            },
+            messages: [],
+            Bot: {
+                messageid: this.DummyData[0].id,
+                passedmessages: [],
+            },
+        }
+        this.key = 0;
+        // Binds
+        this.Setinput = this.Setinput.bind(this);
+        this.Pushinput = this.Pushinput.bind(this);
+        this.GetnextMessage = this.GetnextMessage.bind(this);
+        this.AwaitMessage = this.AwaitMessage.bind(this);
+
     }
     GetnextMessage(Messageid) {
-        const NextMessage = this.messages.filter(msg => msg.id === Messageid+1 );
+        const NextMessage = this.DummyData.filter(msg => msg.id === Messageid);
         return NextMessage;
     }
-    AwaitMessage() {   
-        if(this.state.nextMSG === true ){
-            const Msg = this.GetnextMessage(this.state.initialid);
-            const NewArray = this.state.passedmessages.concat(<Bot key={Msg.id * 2} message={Msg.question} />);
-            this.setState({
-                passedmessages: NewArray
-            })
-        }
+    AwaitMessage() {
+        this.setState((state) => {
+            const Msg = this.GetnextMessage(state.Bot.messageid);
+            const nwMessage = [...state.Bot.passedmessages, Msg];
+            return {
+                Bot: {
+                    passedmessages: nwMessage,
+                    messageid: state.Bot.messageid + 1
+                }
+
+            }
+        });
     }
     SayHello() {
         return Messages.hello;
     }
-}
 
-/*
+    Setinput(value) {
+        this.setState(() => {
+            return {
+                People: {
+                    input: value
+                }
+            }
+        });
+    }
+    Pushinput() {
+        this.setState(state => {
+            const messages = [...state.messages, this.state.People.input]
+            const input = ''
+            return {
+                People: {
+                    input,
+                },
+                messages
+            }
+        })
+        this.AwaitMessage();
+    }
+    render() {
+        return (
+            <React.Fragment>
+                <div className="chat">
+                    <div className="messagearea">
+                        <div className="bot">
+                            <Bot message={this.SayHello()} key='hellobot' />
+                            {this.state.Bot.passedmessages.map(message => {
+                                return message.map(value => {
+                                    return <Bot key={value.id} message={value.question} />
+                                })
+                            })}
+                        </div>
+                        <div className="people" id="">
+                            {this.state.messages.map(msg => {
+                                ++this.key;
+                                return (
+                                    <People key={this.key} message={msg} />
+                                )
+                            })}
+                        </div>
 
-*Roadmap
-1. Pegar as mensagens possiveis [x]
-2. imprimir todas as mensagens [x]
-3. Aguardar {
-    1. Se apresentar
-    2. Fazer a primeira pergunta
-    3. aguardar resposta
+                    </div>
+                    <div className="messageinput">
+                        <input id="messageinput" value={this.state.People.input} type="text" onChange={v => this.Setinput(v.target.value)} placeholder="Escreva algo..." />
+                        <button onClick={this.Pushinput} ><img src={sendicon} alt="enviar" /></button>
+                    </div>
+                </div>
+            </React.Fragment>
+        )
+    }
 }
-*/
