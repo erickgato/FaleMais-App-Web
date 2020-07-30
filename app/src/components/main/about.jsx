@@ -4,6 +4,17 @@ import Menu from "../menu";
 import PricingItem from "../pricingtable";
 
 export default class About extends React.Component {
+  state = {
+    Plans: [],
+    colors: {
+      values: [["#12c2e9", "#c471ed", "#f64f59"], ["#8A2387", "#E94057", "#F27121"], ["#aa4b6b", "#6b6b83", "#3b8d99"]],
+      Cindex: 0
+    },
+    animations: {
+      values: ['left', 'top', 'right'],
+      Aindex: 0
+    }
+  }
   Debounce(func, wait, immediate) {
     let timeout;
     return (...args) => {
@@ -36,11 +47,39 @@ export default class About extends React.Component {
       .getBoundingClientRect().top;
     query.forEach((element) => {
       //Get the distance from top
-        const childElement = element.querySelectorAll('li');
-        element.getBoundingClientRect().top - divcontent < 0
-          ? About.AddclassToChild("animate", childElement)
-          : About.ClearClassToChild("animate", childElement);
+      const childElement = element.querySelectorAll('li');
+      element.getBoundingClientRect().top - divcontent < 0
+        ? About.AddclassToChild("animate", childElement)
+        : About.ClearClassToChild("animate", childElement);
     });
+  }
+  async componentDidMount() {
+    const Plans = await fetch('http://localhost:4000/api/planos');
+    const Data = await Plans.json();
+    this.setState(state => {
+      /* Note: this is setstate scope */
+      let Indexes = {
+        Color: 0,
+        Animation: 0
+      };
+      const plans = Data.map(plan => {
+        const Value =  {
+          id: plan.pl_id,
+          name: plan.pl_name,
+          price: plan.pl_price.replace('R$', ''),
+          color: state.colors.values[Indexes.Color],
+          animation: state.animations.values[Indexes.Animation]
+        }
+        Indexes.Color++;
+        Indexes.Animation++;
+        return Value
+      })
+      return {
+        Plans: plans
+      }
+    })
+
+    console.log(this.state.Plans);
   }
   render() {
     return (
@@ -74,27 +113,17 @@ export default class About extends React.Component {
             <span className="title">Conheça nossos planos</span>
             <nav>
               <ul>
-                <li data-scrow="left">
-                  <PricingItem
-                    animation="left"
-                    data={{ plan: "Fale mais 30", price: "15" }}
-                    color={["#12c2e9", "#c471ed", "#f64f59"]}
-                  />
-                </li>
-                <li data-scrow="top">
-                  <PricingItem
-                    animation="top"
-                    data={{ plan: "Fale mais 200", price: "80" }}
-                    isSportlight={true}
-                    color={["#8A2387", "#E94057", "#F27121"]}
-                  />
-                </li>
-                <li data-scrow="right">
-                  <PricingItem
-                    data={{ plan: "Fale mais 120", price: "40" }}
-                    color={["#aa4b6b", "#6b6b83", "#3b8d99"]}
-                  />
-                </li>
+                {this.state.Plans.map((plan,index) => {
+                  return <li key={`li ${index}`} >
+                            <PricingItem 
+                              key={plan.id} 
+                              animation={plan.animation} 
+                              data={{ plan: plan.name, price: plan.price }} 
+                              color={plan.color} 
+                              isSpotlight={index === 1 ? true : false }
+                            />
+                          </li>
+                })}
               </ul>
             </nav>
           </div>

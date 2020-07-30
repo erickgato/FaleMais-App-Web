@@ -1,7 +1,7 @@
 .messagearea {
     background-color: rgb(32, 30, 30);
     overflow-x: auto;
-    height: 85vh;
+    height: 84vh;
     display: grid;
     grid-template-columns: repeat(6,1fr);
     grid-template-rows: repeat(4,1fr);
@@ -24,12 +24,12 @@
 
 .messageinput {
     background-color: rgba(0, 0, 0, 0.904);
-    height: 8%;
+    height: 10%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     input{
-        margin-top: 0.5em;
+        margin-top: 0.3em;
         height: 70%;
         width: 30%;
         border-radius: 7px;
@@ -44,11 +44,76 @@
             transform: scale(1.1);
         }
     }
+    
+    $green: #00d166;
+    .botoption {
+        text-transform: uppercase;
+        color: #fafafa;
+        background-color: $green;
+        border: none;
+        border-radius: 3px;
+        box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+        transition: .3s all ease;
+        letter-spacing: .1rem;
+        font-size: 10pt;
+        position: relative;
+        top: 0;
+        right: 0;
+        padding-left: 2.5rem;
+        height: 70%;
+        margin-top: 0.34%;
+        &:after,
+        &:before {
+          position: absolute;
+          font-family: 'Barrio', sans-serif;
+          font-weight: bold;
+          font-size: 1rem;
+          color: darken($green, 20%);
+          transition: .3s all ease;
+        }
+        
+        &:before {
+          content: '_';
+          position: absolute;
+          left: 1.4rem;
+          top: .9rem;
+        }
+        
+        &:after {
+          content: '>';
+          position: absolute;
+          left: .8rem;
+          top: 1rem;
+        }
+        
+        &:hover {
+          box-shadow: 1px 1px 20px rgba(150,150,150,.2);
+          top: -.1rem;
+          right: -.1rem;
+          cursor: pointer;
+          
+          
+          &:before {
+            content: '_';
+            position: absolute;
+            left: .8rem;
+            top: .7rem;
+            transform: translateY(-1px);
+          }
+        
+          &:after {
+            content: '>';
+            position: absolute;
+            left: 1.1rem;
+            top: 1rem;
+          }
+        }
+    }
     button{
         margin-left: 2%;
-        margin-top: 0.7%;
-        background-color: transparent !important;
-        border: none !important;
+        margin-top: 0.1%;
+        background-color: transparent;
+        border: none;
         img{
             height: 40px;
         }

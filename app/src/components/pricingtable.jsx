@@ -6,7 +6,7 @@ export default class PricingTable extends Component {
         super(props);
         props.color ? this.color = props.color.join(",") : this.color = 'black'
         this.backgroundColor = `linear-gradient(to top,${this.color})`
-        props.isSportlight ? this.class = 'Pricing-panel spot' : this.class = 'Pricing-panel' 
+        props.isSpotlight ? this.class = 'Pricing-panel spot' : this.class = 'Pricing-panel' 
 
         this.state = {
             price: props.data.price,

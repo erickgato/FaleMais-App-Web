@@ -1,10 +1,39 @@
 {
-    "hello" : "Olá eu sou a assitente de preços",
-    "data" : {
-        "a" : "Qual o seu nome ?",
-        "b": "Qual o ddd de origem ?",
-        "c": "E o de destino ?",
-        "d": "De quantos minutos foi/será a ligação ?"
-    }
+    "hello": "Olá eu sou a assitente de preços",
+    "data": {
+        "a": {
+            "question": "Qual é o seu nome ?",
+            "options": []
+        },
+        "b": {
+            "question": "Qual o ddd de origem ?",
+            "options": []
+        },
+        "c": {
+            "question": "E o de destino ?",
+            "options": []
+        },
+        "d": {
+            "question": "quantos minutos foi ou será a ligação ?",
+            "options": []
+        },
+        "e": {
+            "question": "Qual o plano fale mais ?",
+            "options": [
+                {
+                    "content": "Fale mais 30",
+                    "id": 1
+                },
+                {
+                    "content": "Fale mais 60",
+                    "id": 2
+                },
+                {
+                    "content": "Fale mais 120",
+                    "id": 3
+                }
+            ]
+        }
+    },
+    "Output": "Resultados: origem: $I, Destino: $I, Tempo: $I "
 }
- 
