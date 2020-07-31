@@ -35,5 +35,5 @@
             ]
         }
     },
-    "Output": "Resultados: origem: $I, Destino: $I, Tempo: $I "
+    "Output": "Para o ddd de origem: $I, Destino: $I, Plano: $I, Tempo de ligação de: $I, Com fale mais você paga: $I R$, e sem fale mais: $I R$"
 }
