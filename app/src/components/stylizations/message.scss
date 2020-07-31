@@ -1,31 +1,61 @@
 .message{
-    border: 3px solid red;
     display: flex;
     flex-direction: row;
     width: 90%;
-    font-size: 20pt;
+    font-size: 14pt;
     margin-top: 1%;
     margin-left: 2%;
-    &.people{
-        justify-content: flex-end;
-    }
+    
     // border: 5px solid red;
     .messagebody{
-        border: 5px solid blue;
         min-width: 20%;
         margin-left: 1%;
         margin-right: 1%;
-        background-color: black;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         color: white;
+        border-radius: 2px;
         -webkit-animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 500ms both;
 	        animation: slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) 500ms both;
         span{
             margin-left: 6%;
+            border: none;
         }
+        table{
+            
+            border-collapse: collapse;
+            width: 33em;
+            height: 4em;
+            thead{
+                color: #039e53;
+                background-color: #393939;
+            }
+            tbody{
+                text-align: center;
+                color: #949494;
+                background-color: #222222;
+                font-size: 14pt;
+            }
+        }
+        h1{
+            color: rgb(223, 68, 68);
+        }
+    }
+    &.people{
+        .messagebody{
+            background: linear-gradient(to right,#697fff,#0e30fe);
+            font-size: 18pt;
+            text-align: center;
+        }
+        justify-content: flex-end;
+    }
+    &.bot{
+        .messagebody {
+            min-width: 40%;
+            background: linear-gradient(to right,#363b55,#2d3140);
+        }     
     }
     img{
         border-radius: 100em;

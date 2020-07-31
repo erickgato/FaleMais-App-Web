@@ -1,7 +1,7 @@
 # falemais_app_web
 Repositório para a versão frontend web da aplicação falemais
 ## instalação
-### ! Para rodar esta versão você deve possuir o backend do projeto rodando localmente
+### ! Para rodar esta versão você deve possuir o backend do projeto rodando localmente e na portas 4000
 ### Dependências para instalar 
 -[x]    @testing-library/jest-dom: ^4.2.4
 -[x]    @testing-library/react: ^9.3.2

@@ -1,13 +1,8 @@
 {
-    "hello": "Olá eu sou a assitente de preços da telzir",
+    "hello": "Olá, eu sou o asistente de preços",
     "data": {
-        "a": {
-            "question": "Qual é o seu nome ?",
-            "options": [],
-            "response": "Olá, belo nome"
-        },
         "b": {
-            "question": "Qual o ddd de origem ?",
+            "question": "Por gentileza selecione o DDD de origem",
             "options": []
         },
         "c": {
@@ -19,7 +14,7 @@
             "options": []
         },
         "e": {
-            "question": "Qual o plano fale mais ?",
+            "question": "qual o plano para verificarmos ?",
             "options": [
                 {
                     "content": "Fale mais 30",
@@ -36,5 +31,6 @@
             ]
         }
     },
-    "Output": "Para o ddd de origem: $I, Destino: $I, Plano: $I, Tempo de ligação de: $I, Com fale mais você paga: $I R$, e sem fale mais: $I R$"
+    "Output": "||Para o ddd de origem: $I,|| Destino: $I,|| Plano: $I,|| Tempo de ligação de: $I,|| Com fale mais você paga: $I R$,|| e sem fale mais: $I R$||",
+    "Finalization" : "Obrigado por utilizar nosso sitema."
 }
