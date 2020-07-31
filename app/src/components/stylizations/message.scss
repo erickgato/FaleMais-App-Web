@@ -1,13 +1,18 @@
 .message{
+    border: 3px solid red;
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 90%;
     font-size: 20pt;
     margin-top: 1%;
     margin-left: 2%;
+    &.people{
+        justify-content: flex-end;
+    }
     // border: 5px solid red;
     .messagebody{
-        min-width: 50%;
+        border: 5px solid blue;
+        min-width: 20%;
         margin-left: 1%;
         margin-right: 1%;
         background-color: black;

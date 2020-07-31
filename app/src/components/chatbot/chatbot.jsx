@@ -4,17 +4,18 @@ import { Bot, People } from './message';
 import sendicon from '../../UI/images/sendicon.png'
 import '../stylizations/chat.scss'
 import DataMapper from './Datamaper'
+
 export default class ChatBot extends React.Component {
     constructor(props) {
         super(props);
         this.DummyData = []
-
         let index = 0;
-        for (let [key] in Messages.data) {
+        for (let [key] in props.steps.data) {
             this.DummyData.push({
                 Qname: key,
-                question: Messages.data[key].question,
-                options: Messages.data[key].options,
+                question: props.steps.data[key].question,
+                options: props.steps.data[key].options,
+                Response: props.steps.data[key].response || '',
                 id: index
             })
             ++index;
@@ -32,6 +33,7 @@ export default class ChatBot extends React.Component {
         }
 
         this.key = 0;
+
         // Binds
         this.Setinput = this.Setinput.bind(this);
         this.Pushinput = this.Pushinput.bind(this);
@@ -45,6 +47,7 @@ export default class ChatBot extends React.Component {
         this.SubmitButton = this.SubmitButton.bind(this);
         this.DueTheFinalMessage = this.DueTheFinalMessage.bind(this);
         this.ClearChat = this.ClearChat.bind(this);
+        this.RenderMessages = this.RenderMessages.bind(this);
     }
     ClearChat() {
         this.setState(() => {
@@ -55,7 +58,7 @@ export default class ChatBot extends React.Component {
                 messages: [],
                 Bot: {
                     messageid: this.DummyData[0].id + 2,
-                    passedmessages: [[this.DummyData[0]],[this.DummyData[1]]],
+                    passedmessages: [[this.DummyData[0]], [this.DummyData[1]]],
                     ReceivedData: ['']
                 },
             }
@@ -104,7 +107,6 @@ export default class ChatBot extends React.Component {
 
             return LastMessage;
         }).then((lastmessage) => {
-            console.log(lastmessage, this.state.Bot.passedmessages);
             this.setState(state => {
                 return {
                     Bot: {
@@ -117,17 +119,22 @@ export default class ChatBot extends React.Component {
         })
 
     }
+    GetResponseMensage(id) {
+        const NextMessage = this.DummyData.filter(msg => msg.id === id);
+        return NextMessage;
+    }
     /** 
-         * @Description Quando o evento acontecer irá carregar a proxima mensagem na cadeia de mensagens
+         * @Description_PT Quando o evento acontecer irá carregar a proxima mensagem na cadeia de mensagens
          * @return Novo estado
          * */
     AwaitMessage() {
-        console.log(this.plano);
         const Msg = this.GetnextMessage(this.state.Bot.messageid);
         if (Msg.length === 0)
             this.DueTheFinalMessage();
         else {
             this.setState(state => {
+                const ResponseMessage = this.GetResponseMensage(this.state.Bot.messageid - 1)
+                console.log(ResponseMessage)
                 let nwMessage = [...state.Bot.passedmessages, Msg];
                 return {
                     Bot: {
@@ -138,20 +145,6 @@ export default class ChatBot extends React.Component {
 
                 }
             })
-            /*
-            this.setState(state => {
-
-                
-                /*indicates that the number of messages has reached the end */
-            /*
-            if (Msg.length === 0) {
-                
-    
-            }
-            */
-            /*    
-            });
-            */
 
         }
 
@@ -211,6 +204,8 @@ export default class ChatBot extends React.Component {
          * 
          * */
     PushData(value = this.state.People.input) {
+        if (value === '')
+            return
         this.setState(state => {
             return {
                 Bot: {
@@ -304,29 +299,42 @@ export default class ChatBot extends React.Component {
             return this.RenderOptions()
 
     }
+    /** 
+    * @Description_PT Itera as mensagens de bot e de Usuário, 
+    * Renderizar na ordem(Messagem, resposta)
+    * */
 
+    RenderMessages() {
+        const Iterator = () => {
+
+        }
+        const Bot = () => {
+            const BotMessagesArray = this.state.Bot.passedmessages.map(message => {
+                return message.map(value => {
+                    return <Bot key={value.id} message={value.question} />
+                })
+            });
+            return BotMessagesArray;
+        }
+        const People = () => {
+            const PeopleMessageArray = this.state.messages.map(msg => {
+                ++this.key;
+                return <People key={this.key} message={msg} />
+            })
+            return PeopleMessageArray;
+        }
+        return People();
+    }
     render() {
 
         return (
             <React.Fragment>
                 <div className="chat">
                     <div className="messagearea">
-                        <div className="bot">
-                            <Bot message={this.SayHello()} key='hellobot' />
-                            {this.state.Bot.passedmessages.map(message => {
-                                return message.map(value => {
-                                    return <Bot key={value.id} message={value.question} />
-                                })
-                            })}
-                        </div>
-                        <div className="people">
-                            {this.state.messages.map(msg => {
-                                ++this.key;
-                                return (
-                                    <People key={this.key} message={msg} />
-                                )
-                            })}
-                        </div>
+
+                        <Bot message={this.SayHello()} key='hellobot' />
+                        {this.RenderMessages()}
+
                     </div>
                     <div className="messageinput">
                         {this.RenderMessagesInputs()}

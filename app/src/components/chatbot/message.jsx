@@ -6,7 +6,7 @@ export class Bot extends React.Component {
     render() {
 
         return (
-            <section className="message">
+            <section className="message bot ">
                 <img src={BotIMage} alt="BotImage" />
                 <div className="messagebody" style={{ backgroundColor: this.props.color ? this.props.color : "black" }} >
                     <span>
@@ -23,7 +23,7 @@ export class People extends React.Component {
     render() {
 
         return (
-            <section className="message end">
+            <section className="message people">
                 <div className="messagebody" style={{ backgroundColor: this.props.color ? this.props.color : "black" }} >
                     <span>
                         {this.props.message ? this.props.message : "undefined"}
