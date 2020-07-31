@@ -97,6 +97,7 @@ export default class About extends React.Component {
                     data={{ plan: "Fale mais 120", price: "40" }}
                     color={["#aa4b6b", "#6b6b83", "#3b8d99"]}
                   />
+                  
                 </li>
               </ul>
             </nav>
