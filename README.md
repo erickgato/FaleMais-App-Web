@@ -1,4 +1,4 @@
-# falemais_app_web
+# Falemais App Web
 Repositório para a versão frontend web da aplicação falemais
 ## instalação
 ### ! Para rodar esta versão você deve possuir o backend do projeto rodando localmente e na portas 4000
